@@ -10,7 +10,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
 app.use(session({
-  secret: sample.env.SESSION_SECRET,
+  secret: SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie: { secure: false }
