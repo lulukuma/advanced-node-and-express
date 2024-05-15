@@ -5,14 +5,12 @@ const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const session = require('express-session');
 const passport = require('passport');
-
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
-
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: sample.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   cookie: { secure: false }
