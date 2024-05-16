@@ -11,7 +11,8 @@ const { ObjectID } = require('mongodb');
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  //secret: process.env.SESSION_SECRET,
+  secret: 'test',
   resave: true,
   saveUninitialized: true,
   cookie: { secure: false }
