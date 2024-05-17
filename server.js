@@ -44,11 +44,11 @@ myDB(async client => {
 
   app.route('/login').post(passport.authenticate('local', { failureRedirect: '/' }), (req, res) => {
     res.redirect('/profile');
-  })
+  });
 
-  app.route('/profile').get((req,res) => {
+  app.route('/profile').get(ensureAuthenticated,(req,res) => {
     res.render('profile');
-  })
+  });
 
 
   passport.use(new LocalStrategy((username, password, done) => {
@@ -80,6 +80,12 @@ myDB(async client => {
 });
 // app.listen out here...
 
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
 //app.route('/').get((req, res) => {
 //res.render('index', { title: 'Hello', message: 'Please log in' });
 //});
