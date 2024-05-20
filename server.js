@@ -8,6 +8,7 @@ const passport = require('passport');
 const app = express();
 const { ObjectID } = require('mongodb');
 const LocalStrategy = require('passport-local');
+const bcrypt = require('bcrypt');
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
