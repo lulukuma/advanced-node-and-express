@@ -23,13 +23,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 myDB(async client => {
   const myDataBase = await client.db('database').collection('users');
 
@@ -125,7 +122,6 @@ app.use((req, res, next) => {
   });
 });
 // app.listen out here...
-
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -135,9 +131,6 @@ function ensureAuthenticated(req, res, next) {
 //app.route('/').get((req, res) => {
 //res.render('index', { title: 'Hello', message: 'Please log in' });
 //});
-
-
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
