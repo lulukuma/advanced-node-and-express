@@ -102,7 +102,6 @@ app.use((req, res, next) => {
       if (!bcrypt.compareSync(password, user.password)) { 
         return done(null, false);
       }
-      return done(null, user);
     });
   }));
 
