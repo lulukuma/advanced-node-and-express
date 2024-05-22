@@ -66,9 +66,9 @@ module.exports = function (app, myDataBase) {
     res.redirect('/chat');
   });
 
-  app.route('/chat').get(passport.ensureAuthenticated,(req,res) =>{
-    res.render('chat.pug', {user: req.user});
-  });
+ // app.route('/chat').get(passport.ensureAuthenticated,(req,res) =>{
+ //   res.render('chat.pug', {user: req.user});
+ // });
 
     app.use((req, res, next) => {
       res.status(404)
