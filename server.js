@@ -6,19 +6,24 @@ const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const session = require('express-session');
 const passport = require('passport');
+
 const app = express();
+
 const routes = require('./routes.js');
 const auth = require('./auth.js');
+
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const passportSocketIo = require('passport.socketio');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
-const URI = process.env.MONGO_URI;
+//const URI = process.env.MONGO_URI;
+const URI = 'mongodb+srv://test:test@cluster0.omth9xh.mongodb.net/?retryWrites=true&w=majority';
 const store = new MongoStore({ url: URI });
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
+
 app.use(session({
   //secret: process.env.SESSION_SECRET,
   secret: 'test',
