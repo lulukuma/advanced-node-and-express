@@ -11,8 +11,10 @@ const routes = require('./routes.js');
 const auth = require('./auth.js');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+const passportSocketIo = require('passport.socketio');
+const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
-const URI = 'mongodb+srv://test:test@cluster0.omth9xh.mongodb.net/?retryWrites=true&w=majority';
+const URI = process.env.MONGO_URI;
 const store = new MongoStore({ url: URI });
 
 app.set('view engine', 'pug');
