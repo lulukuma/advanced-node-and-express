@@ -1,6 +1,7 @@
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 
+
 module.exports = function (app, myDataBase) {
     app.route('/').get((req, res) => {
         // Change the response to render the Pug template
@@ -61,7 +62,12 @@ module.exports = function (app, myDataBase) {
 
     app.route('/auth/github').get(passport.authenticate('github'));
   app.route('/auth/github/callback').get(passport.authenticate('github', { failureRedirect: '/' }), (req, res) => {
-    res.redirect('/profile');
+    req.session.user_id = req.user.id;
+    res.redirect('/chat');
+  });
+
+  app.route('/chat').get(passport.ensureAuthenticated,(req,res) =>{
+    res.render('chat.pug', {user: req.user});
   });
 
     app.use((req, res, next) => {

@@ -9,6 +9,8 @@ const passport = require('passport');
 const app = express();
 const routes = require('./routes.js');
 const auth = require('./auth.js');
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
@@ -42,6 +44,6 @@ myDB(async client => {
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
 });

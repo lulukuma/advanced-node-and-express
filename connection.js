@@ -20,4 +20,8 @@ async function main(callback) {
     }
 }
 
+io.on('connection', socket => {
+    console.log('A user has connected');
+  });
+
 module.exports = main;
