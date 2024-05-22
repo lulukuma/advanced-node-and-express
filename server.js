@@ -12,7 +12,7 @@ const auth = require('./auth.js');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const MongoStore = require('connect-mongo')(session);
-const URI = process.env.MONGO_URI;
+const URI = 'mongodb+srv://test:test@cluster0.omth9xh.mongodb.net/?retryWrites=true&w=majority';
 const store = new MongoStore({ url: URI });
 
 app.set('view engine', 'pug');
